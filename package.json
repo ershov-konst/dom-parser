@@ -1,0 +1,11 @@
+{
+  "name": "dom-parser",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm install && ./node_modules/.bin/mocha"
+  },
+  "author": "Konstantin Ershov",
+  "license": "ISC"
+}

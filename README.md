@@ -2,7 +2,7 @@
 
 Fast dom parser based on regexps
 
-## installing
+## installation
 
     npm install dom-parser
 

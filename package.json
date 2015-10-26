@@ -1,8 +1,10 @@
 {
   "name": "dom-parser",
   "version": "0.0.1",
-  "description": "",
+  "description": "Fast dom parser based on regexps",
   "main": "index.js",
+  "devDependencies": {
+  },
   "scripts": {
     "test": "npm install && ./node_modules/.bin/mocha"
   },

@@ -2,6 +2,16 @@
   "name": "dom-parser",
   "version": "0.0.2",
   "description": "Fast dom parser based on regexps",
+  "keywords": [
+    "domparser",
+    "dom",
+    "parser",
+    "xml",
+    "html",
+    "xmlparser",
+    "htmlparser",
+    "scraping"
+  ],
   "main": "index.js",
   "devDependencies": {
     "mocha": "2.3.x",

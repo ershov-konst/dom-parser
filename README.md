@@ -25,7 +25,10 @@ Fast dom parser based on regexps
 
 Implemented methods:
 
+* getElementById
 * getElementsByClassName
+* getElementsByTagName
+* getElementsByName
 
 ##### Node
 
@@ -43,7 +46,10 @@ Implemented properties
 Implemented methods
 
 * getAttribute
+* getElementById
+* getElementsByClassName
 * getElementsByTagName
+* getElementsByName
 
 Usage - https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement
 

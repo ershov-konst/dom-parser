@@ -42,6 +42,7 @@ Implemented properties
 * parentNode
 * attributes
 * innerHTML
+* outerHTML
 
 Implemented methods
 

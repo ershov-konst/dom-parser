@@ -15,7 +15,8 @@
   "main": "index.js",
   "devDependencies": {
     "mocha": "2.3.x",
-    "chai": "2.1.x"
+    "chai": "2.1.x",
+    "dom-compare": "git://github.com/user/project.git"
   },
   "scripts": {
     "test": "npm install && ./node_modules/.bin/mocha"

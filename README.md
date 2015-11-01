@@ -43,6 +43,7 @@ Implemented properties
 * attributes
 * innerHTML
 * outerHTML
+* textContent
 
 Implemented methods
 

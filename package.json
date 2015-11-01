@@ -1,6 +1,6 @@
 {
   "name": "dom-parser",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "Fast dom parser based on regexps",
   "keywords": [
     "domparser",

@@ -1,8 +1,7 @@
-describe('outerHTML', function () {
+describe('textContent', function () {
   var
     chai = require('chai'),
-    assert = chai.assert,
-    compare = require('dom-compare').compare;
+    assert = chai.assert;
 
   var
     DomParser = require('../index.js'),
@@ -12,10 +11,12 @@ describe('outerHTML', function () {
     var html =
       '<div id="root">\n' +
       '  <div class="container">\n' +
+      '    some text\n' +
       '    <span>\n' +
       '      <div class="broken">\n' +
-      '        <div class="inner">1</div>\n' +
+      '        <div class="inner"> 123 </div>\n' +
       '      </div>\n' +
+      '    some text\n' +
       '    </span>\n' +
       '  </div>\n' +
       '</div>';
@@ -24,7 +25,7 @@ describe('outerHTML', function () {
       dom = parser.parseFromString(html),
       ctn = dom.getElementById('root');
 
-    assert.equal(ctn.outerHTML, html);
+    assert.equal(ctn.textContent, '\n \n some text\n \n \n 123 \n \n some text\n \n \n');
 
   });
 });

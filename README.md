@@ -13,7 +13,7 @@ Fast dom parser based on regexps
 
     fs.readFile('htmlToParse.html', 'utf8', function(err, html){
       if (!err){
-        var dom = parser.parserFromString(html);
+        var dom = parser.parseFromString(html);
 
         console.log(dom.getElementById('myElement').innerHTML);
       }

@@ -1,6 +1,6 @@
 {
   "name": "dom-parser",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Fast dom parser based on regexps",
   "repository": {
     "type": "git",

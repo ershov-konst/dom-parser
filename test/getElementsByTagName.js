@@ -34,6 +34,30 @@ describe('getting elements by tag name', function () {
       assert.equal(divs.length, 8, 'html contains 8 elements with tagName "div"');
       assert.equal(spans.length, 5, 'html contains 5 elements with tagName "span"');
     });
+
+    it('tags with separators', function(){
+      var html =
+        '<div class="examples root">\n' +
+        '  <tip_link_head>\n' +
+        '    <tip-link>foo</tip-link>\n' +
+        '    <tip-link>foo</tip-link>\n' +
+        '  </tip_link_head>\n' +
+        '  <tip_link_head>\n' +
+        '    <tip:link>bar</tip:link>\n' +
+        '    <tip:link>bar</tip:link>\n' +
+        '  </tip_link_head>\n' +
+        '</div>';
+
+      var
+        dom = parser.parseFromString(html),
+        tips_colon = dom.getElementsByTagName('tip:link'),
+        tips_hyphen = dom.getElementsByTagName('tip-link'),
+        tips_underline = dom.getElementsByTagName('tip_link_head');
+
+      assert.equal(tips_colon.length, 2, 'html contains 2 elements with tagName "tip:link"');
+      assert.equal(tips_hyphen.length, 2, 'html contains 2 elements with tagName "tip-link"');
+      assert.equal(tips_underline.length, 2, 'html contains 2 elements with tagName "tip_link_head"');
+    });
   });
 
   context('Node', function(){

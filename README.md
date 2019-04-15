@@ -29,6 +29,7 @@ Implemented methods:
 * getElementsByClassName
 * getElementsByTagName
 * getElementsByName
+* getElementsByAttribute
 
 ##### Node
 

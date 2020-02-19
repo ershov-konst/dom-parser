@@ -21,7 +21,7 @@ Fast dom parser based on regexps
 
 ## API
 
-##### Dom
+### Dom
 
 Implemented methods:
 
@@ -30,9 +30,9 @@ Implemented methods:
 * getElementsByTagName
 * getElementsByName
 
-##### Node
+### Node
 
-Implemented properties
+#### Implemented properties
 
 * nodeType
 * nodeName
@@ -45,7 +45,7 @@ Implemented properties
 * outerHTML
 * textContent
 
-Implemented methods
+#### Implemented methods
 
 * getAttribute
 * getElementById

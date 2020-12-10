@@ -44,7 +44,7 @@ Implemented properties
 * innerHTML
 * outerHTML
 * textContent
-
+* classList
 Implemented methods
 
 * getAttribute

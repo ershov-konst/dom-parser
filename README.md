@@ -29,6 +29,7 @@ Implemented methods:
 * getElementsByClassName
 * getElementsByTagName
 * getElementsByName
+* querySelectorAll
 
 ##### Node
 
@@ -52,6 +53,7 @@ Implemented methods
 * getElementsByClassName
 * getElementsByTagName
 * getElementsByName
+* querySelectorAll
 
 Usage - https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement
 

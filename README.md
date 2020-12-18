@@ -29,6 +29,7 @@ Implemented methods:
 * getElementsByClassName
 * getElementsByTagName
 * getElementsByName
+* querySelectorAll
 
 ##### Node
 
@@ -44,7 +45,7 @@ Implemented properties
 * innerHTML
 * outerHTML
 * textContent
-
+* classList
 Implemented methods
 
 * getAttribute
@@ -52,6 +53,7 @@ Implemented methods
 * getElementsByClassName
 * getElementsByTagName
 * getElementsByName
+* querySelectorAll
 
 Usage - https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement
 

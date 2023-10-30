@@ -1,6 +1,6 @@
 {
   "name": "dom-parser",
-  "version": "0.1.6",
+  "version": "1.0.0",
   "description": "Fast dom parser based on regexps",
   "repository": {
     "type": "git",
@@ -16,13 +16,22 @@
     "htmlparser",
     "scraping"
   ],
-  "main": "index.js",
+  "main": "dist/index.js",
   "devDependencies": {
-    "mocha": "2.3.x",
     "chai": "2.1.x",
-    "dom-compare": "https://github.com/ershov-konst/dom-compare.git"
+    "dom-compare": "https://github.com/ershov-konst/dom-compare.git",
+    "eslint": "^8.52.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-typescript": "^17.1.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-import": "^2.29.0",
+    "eslint-plugin-sonarjs": "^0.21.0",
+    "mocha": "2.3.x",
+    "prettier": "^3.0.3",
+    "typescript": "^5.2.2"
   },
   "scripts": {
+    "build": "tsc",
     "test": "npm install && ./node_modules/.bin/mocha"
   },
   "author": "Konstantin Ershov",

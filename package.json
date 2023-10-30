@@ -30,6 +30,7 @@
     "typescript": "^5.2.2"
   },
   "scripts": {
+    "lint": "eslint src",
     "build": "tsc",
     "test": "npm install && ./node_modules/.bin/mocha"
   },

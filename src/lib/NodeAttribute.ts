@@ -5,6 +5,7 @@ export interface NodeAttributeProps {
 
 export class NodeAttribute {
   name: string;
+
   value: string;
 
   constructor({ name, value }: NodeAttributeProps) {

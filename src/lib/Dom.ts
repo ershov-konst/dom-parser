@@ -80,10 +80,18 @@ function* domGenerator(html: string) {
 
     if (isElementComposed(cursor, tag)) {
       yield cursor;
-
-      cursor = cursor?.parentNode || null;
+      cursor = getParent(cursor);
     }
   }
+
+  while (cursor) {
+    yield cursor;
+    cursor = getParent(cursor);
+  }
+}
+
+function getParent(cursor: Node | null): Node | null {
+  return cursor?.parentNode || null;
 }
 
 function isElementComposed(element: Node | null, tag: string) {

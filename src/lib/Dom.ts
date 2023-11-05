@@ -20,19 +20,25 @@ export class Dom {
     this.rawHTML = rawHTML;
   }
 
-  private find(conditionFn: (node: Node) => boolean, findFirst?: boolean) {
-    return find(this.rawHTML, conditionFn, findFirst);
+  private find(conditionFn: (node: Node) => boolean, findFirst: true): Node | null;
+  private find(conditionFn: (node: Node) => boolean): Node[];
+  private find(conditionFn: (node: Node) => boolean, findFirst: boolean = false) {
+    const result = find(this.rawHTML, conditionFn, findFirst);
+    return findFirst ? result[0] || null : result;
   }
 
   getElementsByClassName(className: string) {
-    return this.find((node) => node.getAttribute('class') === className);
+    const expr = new RegExp(`^(.*?\\s)?${className}(\\s.*?)?$`);
+    return this.find((node) =>
+      Boolean(node.attributes.length && expr.test(node.getAttribute('class') || '')),
+    );
   }
 
   getElementsByTagName(tagName: string) {
     return this.find((node) => node.nodeName === tagName);
   }
 
-  getElementById(id: string) {
+  getElementById(id: string): Node | null {
     return this.find((node) => node.getAttribute('id') === id, true);
   }
 
@@ -53,10 +59,10 @@ function find(html: string, conditionFn: (node: Node) => boolean, onlyFirst: boo
 
   for (const node of generator) {
     if (node && conditionFn(node)) {
-      if (onlyFirst) {
-        return node;
-      }
       result.push(node);
+      if (onlyFirst) {
+        return result;
+      }
     }
   }
   return result;
@@ -68,12 +74,11 @@ function* domGenerator(html: string) {
 
   for (let i = 0, l = tags.length; i < l; i++) {
     const tag = tags[i];
-    const isCloseTag = closeTagExp.test(tag);
     const node = createNode(tag, cursor);
 
     cursor = node || cursor;
 
-    if (isCloseTag || cursor?.isSelfCloseTag) {
+    if (isElementComposed(cursor, tag)) {
       yield cursor;
 
       cursor = cursor?.parentNode || null;
@@ -81,11 +86,19 @@ function* domGenerator(html: string) {
   }
 }
 
+function isElementComposed(element: Node | null, tag: string) {
+  const isCloseTag = closeTagExp.test(tag);
+  const [, nodeName] = tag.match(nodeNameExp) || [];
+  const isElementClosedByTag = isCloseTag && element?.nodeName === nodeName;
+
+  return isElementClosedByTag || element?.isSelfCloseTag || element?.nodeType === NodeType.text;
+}
+
 function getAllTags(html: string) {
   return html.match(tagRegExp) || [];
 }
 
-function createNode(tag: string, parentNode: Node | null) {
+function createNode(tag: string, parentNode: Node | null): Node | null {
   const isTextNode = textNodeExp.test(tag);
   const isStartTag = startTagExp.test(tag);
   let node: Node | null = null;
@@ -102,7 +115,7 @@ function createNode(tag: string, parentNode: Node | null) {
 }
 
 function createElementNode(tag: string, parentNode: Node | null) {
-  const [nodeName, namespace] = tag.match(nodeNameExp) || [];
+  const [, nodeName, namespace] = tag.match(nodeNameExp) || [];
   const selfCloseTag = selfCloseTagExp.test(tag) || noClosingTagsExp.test(nodeName);
   const attributes = parseAttributes(tag);
 
@@ -122,7 +135,9 @@ function createElementNode(tag: string, parentNode: Node | null) {
 
 function parseAttributes(tag: string) {
   return (tag.match(attrRegExp) || []).map((attributeString) => {
-    const [name = '', value = '']: string[] = splitAttrRegExp.exec(attributeString) || [];
+    splitAttrRegExp.lastIndex = 0;
+    const exec = splitAttrRegExp.exec(attributeString) || [];
+    const [, name = '', value = '']: string[] = exec;
     return new NodeAttribute({
       name: name.trim(),
       value: value.trim().replace(attributeQuotesExp, ''),

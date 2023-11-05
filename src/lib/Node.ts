@@ -143,7 +143,7 @@ function searchElements(root: Node, conditionFn: (node: Node) => boolean): Node[
     if (childNode.nodeType !== NodeType.text && conditionFn(childNode)) {
       return [...accumulator, childNode, ...searchElements(childNode, conditionFn)];
     }
-    return accumulator;
+    return [...accumulator, ...searchElements(childNode, conditionFn)];
   }, []);
 }
 

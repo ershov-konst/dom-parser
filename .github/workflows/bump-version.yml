@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: 'Checkout source code'
         uses: actions/checkout@v3
+        with:
+          persist-credentials: false
       - name: 'Automated Version Bump'
         uses: 'phips28/gh-action-bump-version@master'
         with:

@@ -1,0 +1,33 @@
+name: Build and publish the npm package
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Load current commit
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Read nvmrc
+        id: read-nvmrc
+        run: echo "version=$(cat .nvmrc)" >> $GITHUB_OUTPUT
+        shell: bash
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ steps.read-nvmrc.outputs.version }}
+
+      - name: Install dependencies
+      - run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.NPM_TOKEN }}" >> ~/.npmrc
+      - run: npm ci
+      - run: npm run build
+      - run: npm publish
+

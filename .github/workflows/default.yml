@@ -1,5 +1,5 @@
 name: CI
-on: pull_request_target
+on: pull_request
 jobs:
 
   tests:
@@ -10,7 +10,7 @@ jobs:
       - name: Load current commit
         uses: actions/checkout@v3
         with:
-          token: ${{ secrets.AUTOMATION_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Read nvmrc
         id: read-nvmrc

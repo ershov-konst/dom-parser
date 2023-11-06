@@ -22,7 +22,7 @@ export class Dom {
 
   private find(conditionFn: (node: Node) => boolean, findFirst: true): Node | null;
   private find(conditionFn: (node: Node) => boolean): Node[];
-  private find(conditionFn: (node: Node) => boolean, findFirst: boolean = false) {
+  private find(conditionFn: (node: Node) => boolean, findFirst?: boolean) {
     const result = find(this.rawHTML, conditionFn, findFirst);
     return findFirst ? result[0] || null : result;
   }
@@ -80,26 +80,25 @@ function* domGenerator(html: string) {
 
     if (isElementComposed(cursor, tag)) {
       yield cursor;
-      cursor = getParent(cursor);
+      cursor = cursor.parentNode;
     }
   }
 
   while (cursor) {
     yield cursor;
-    cursor = getParent(cursor);
+    cursor = cursor.parentNode;
   }
 }
 
-function getParent(cursor: Node | null): Node | null {
-  return cursor?.parentNode || null;
-}
-
 function isElementComposed(element: Node | null, tag: string) {
+  if (!tag) {
+    return false;
+  }
   const isCloseTag = closeTagExp.test(tag);
   const [, nodeName] = tag.match(nodeNameExp) || [];
-  const isElementClosedByTag = isCloseTag && element?.nodeName === nodeName;
+  const isElementClosedByTag = isCloseTag && element.nodeName === nodeName;
 
-  return isElementClosedByTag || element?.isSelfCloseTag || element?.nodeType === NodeType.text;
+  return isElementClosedByTag || element.isSelfCloseTag || element.nodeType === NodeType.text;
 }
 
 function getAllTags(html: string) {
@@ -109,17 +108,16 @@ function getAllTags(html: string) {
 function createNode(tag: string, parentNode: Node | null): Node | null {
   const isTextNode = textNodeExp.test(tag);
   const isStartTag = startTagExp.test(tag);
-  let node: Node | null = null;
 
   if (isTextNode) {
-    node = createTextNode(tag, parentNode);
+    return createTextNode(tag, parentNode);
   }
 
   if (isStartTag) {
-    node = createElementNode(tag, parentNode);
+    return createElementNode(tag, parentNode);
   }
 
-  return node;
+  return null;
 }
 
 function createElementNode(tag: string, parentNode: Node | null) {

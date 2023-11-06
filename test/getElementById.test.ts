@@ -15,7 +15,7 @@ describe('getElementById', () => {
           <div class=" asd example ss"></div>
           <div class=" sd examples"></div>
           <span>text</span>
-          <div class=" example as"
+          <div class=" example as">
             <span id="nestedExample"></span>
           </div>
         </div>`;

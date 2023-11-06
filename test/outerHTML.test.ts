@@ -8,7 +8,7 @@ describe('outerHTML', () => {
             <div class="broken">
               <div class="inner">1</div>
               <br/>
-              <input type="text" disabled />
+              <input type="text" disabled/>
             </div>
           </span>
         </div>
@@ -27,7 +27,7 @@ describe('outerHTML', () => {
       </div>`;
     const correctedHtml = `<div id="root">
         <div class="container">
-            <input type="text" disabled />
+            <input type="text" disabled/>
         </div>
       </div>`;
 

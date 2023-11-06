@@ -59,4 +59,12 @@ describe('invalid html', () => {
 
     expect(ctn.outerHTML).toEqualDom(validHTML);
   });
+  it('empty string', () => {
+    const dom = parseFromString('');
+    const anyById = dom.getElementById('any');
+    const emptyList = dom.getElementsByClassName('any');
+
+    expect(anyById).toBeNull();
+    expect(emptyList).toHaveLength(0);
+  });
 });

@@ -5,10 +5,10 @@ module.exports = {
   setupFilesAfterEnv: ['<rootDir>/test/jest-extend.ts'],
   coverageThreshold: {
     global: {
-      statements: 95,
+      statements: 100,
       branches: 95,
-      functions: 95,
-      lines: 95,
+      functions: 100,
+      lines: 100,
     },
   },
 };

@@ -4,6 +4,7 @@ module.exports = {
   testEnvironment: 'node',
   setupFilesAfterEnv: ['<rootDir>/test/jest-extend.ts'],
   testPathIgnorePatterns: ['/node_modules/', '<rootDir>/dist'],
+  coverageReporters: ['clover', 'json', 'lcov', 'text', 'json-summary'],
   coverageThreshold: {
     global: {
       statements: 100,

@@ -22,6 +22,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ steps.read-nvmrc.outputs.version }}
+      - run: npm ci
       - run: npm test
 
       - name: Generating coverage badges

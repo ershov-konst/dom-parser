@@ -23,4 +23,13 @@ describe('lastChild', () => {
 
     expect(lastChild.getAttribute('id')).toEqual('last');
   });
+
+  it('empty', () => {
+    const html = `<div id="root"></div>`;
+
+    const dom = parseFromString(html);
+    const { lastChild } = dom.getElementById('root');
+
+    expect(lastChild).toBeNull();
+  });
 });

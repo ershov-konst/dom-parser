@@ -23,4 +23,13 @@ describe('firstChild', () => {
 
     expect(firstChild.getAttribute('id')).toEqual('first');
   });
+
+  it('empty', () => {
+    const html = `<div id="root"></div>`;
+
+    const dom = parseFromString(html);
+    const { firstChild } = dom.getElementById('root');
+
+    expect(firstChild).toBeNull();
+  });
 });

@@ -94,7 +94,7 @@ describe('getElementById', () => {
       const dom = parseFromString(html);
       const root = dom.getElementById('root');
       const element = root.getElementById('example');
-      const nestedElement = dom.getElementById('nestedExample');
+      const nestedElement = root.getElementById('nestedExample');
 
       expect(element).not.toBeNull();
       expect(nestedElement).not.toBeNull();

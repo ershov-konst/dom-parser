@@ -14,7 +14,7 @@ describe('getElementsByClassName', () => {
         <span>text</span>
         <div class=" asd example ss"></div>
         <div class=" sd examples"></div>
-        <span>text</span>
+        <span data-class="example">text</span>
         <div class=" example as">
         </div>
       </div>`;
@@ -56,7 +56,7 @@ describe('getElementsByClassName', () => {
             <div class="  example"></div>
             <span>text</span>
             <div class="example    "></div>
-            <span>text</span>
+            <span data-class="example">text</span>
             <div class=" asd example ss"></div>
             <div class=" sd examples"></div>
             <span>text</span>

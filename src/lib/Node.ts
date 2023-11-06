@@ -92,7 +92,7 @@ export class Node {
 
   get textContent(): string {
     if (this.nodeType === NodeType.text) {
-      return this.text || '';
+      return this.text;
     }
     return this.childNodes
       .map((node) => node.textContent)
@@ -164,7 +164,5 @@ function searchElement(root: Node, conditionFn: (node: Node) => boolean): Node |
 }
 
 function stringifyAttributes(attributes: NodeAttribute[]) {
-  return (attributes.map((elem) => elem.name + (elem.value ? `="${elem.value}"` : '')) || []).join(
-    ' ',
-  );
+  return attributes.map((elem) => elem.name + (elem.value ? `="${elem.value}"` : '')).join(' ');
 }

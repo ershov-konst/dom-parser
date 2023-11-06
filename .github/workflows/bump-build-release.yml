@@ -1,4 +1,4 @@
-name: Bump version
+name: Build and release
 
 on:
   push:

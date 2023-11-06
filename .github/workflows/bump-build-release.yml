@@ -38,8 +38,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ steps.read-nvmrc.outputs.version }}
-
-      - name: Install dependencies
       - run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.NPM_TOKEN }}" >> ~/.npmrc
       - run: npm ci
       - run: npm run build

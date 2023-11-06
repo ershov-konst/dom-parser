@@ -1,12 +1,26 @@
-name: Build and publish the npm package
+name: Bump version
 
 on:
   push:
-    tags:
-      - 'v*.*.*'
+    branches:
+      - main
 
 jobs:
-  build:
+  bump-version:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 'Checkout source code'
+        uses: actions/checkout@v3
+      - name: 'Automated Version Bump'
+        uses: 'phips28/gh-action-bump-version@master'
+        with:
+          tag-prefix: 'v'
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  build-and-release:
+    needs: [bump-version]
     runs-on: ubuntu-latest
 
     steps:
@@ -30,4 +44,3 @@ jobs:
       - run: npm ci
       - run: npm run build
       - run: npm publish
-

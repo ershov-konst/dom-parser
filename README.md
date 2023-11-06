@@ -13,16 +13,19 @@ Fast, tiny, zero-dependency DOM parser based on RegExps
     npm install dom-parser
 
 ## Usage
-    import { parseFromString } from 'dom-parser';
+```typescript
+import { parseFromString } from 'dom-parser';
 
-    const html = await fs.readFileAsync('htmlToParse.html');
+const html = await fs.readFileAsync('htmlToParse.html');
 
-    // Getting DOM model
-    const dom = parseFromString(html);
+// Getting DOM model
+const dom = parseFromString(html);
 
-    // Searching Nodes
-    const rootNode = dom.getElementById('rootNode');
-    const childNodes = rootNode.getElementsByClassName('childNodeClass');
+// Searching Nodes
+const rootNode = dom.getElementById('rootNode');
+const childNodes = rootNode.getElementsByClassName('childNodeClass');
+
+```
 
 ## API
 

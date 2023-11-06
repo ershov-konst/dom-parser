@@ -1,23 +1,28 @@
 # dom-parser
 
-Fast dom parser based on regexps
+Fast, tiny, zero-dependency DOM parser based on RegExps
 
-## installation
+![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/ershov-konst/dom-parser/bump-build-release.yml)
+![Jest coverage](./badges/coverage-jest%20coverage.svg)
+![npm](https://img.shields.io/npm/dw/dom-parser)
+![GitHub](https://img.shields.io/github/license/ershov-konst/dom-parser)
+
+
+## Installation
 
     npm install dom-parser
 
-## usage
+## Usage
+    import { parseFromString } from 'dom-parser';
 
-    var DomParser = require('dom-parser');
-    var parser = new DomParser();
+    const html = await fs.readFileAsync('htmlToParse.html');
 
-    fs.readFile('htmlToParse.html', 'utf8', function(err, html){
-      if (!err){
-        var dom = parser.parseFromString(html);
+    // Getting DOM model
+    const dom = parseFromString(html);
 
-        console.log(dom.getElementById('myElement').innerHTML);
-      }
-    })
+    // Searching Nodes
+    const rootNode = dom.getElementById('rootNode');
+    const childNodes = rootNode.getElementsByClassName('childNodeClass');
 
 ## API
 
@@ -56,6 +61,6 @@ Implemented methods
 Usage - https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement
 
 
-## contributing
+## Contributing
 
-issues and pull requests are welcome!
+Issues and pull requests are welcome!

@@ -11,7 +11,7 @@ test('Node.getAttribute', () => {
   const inner = dom.getElementById('inner');
 
   expect(outer.attributes).toHaveLength(3);
-  expect(outer.getAttribute('id')).toEqual('outer');
+  expect(outer.getAttribute('id')).toEqual('oute2r');
   expect(outer.getAttribute('data-a')).toEqual('');
   expect(outer.getAttribute('ttt')).toEqual("asd'");
   expect(outer.getAttribute('not-exists')).toEqual(null);

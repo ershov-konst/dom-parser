@@ -1,3 +1,4 @@
+/// <reference types="./types.d.ts" />
 import { compareStrings, GroupingReporter as compareReporter } from 'dom-compare';
 
 expect.extend({

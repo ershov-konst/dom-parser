@@ -3,6 +3,7 @@ module.exports = {
   preset: 'ts-jest',
   testEnvironment: 'node',
   setupFilesAfterEnv: ['<rootDir>/test/jest-extend.ts'],
+  testPathIgnorePatterns: ['/node_modules/', '<rootDir>/dist'],
   coverageThreshold: {
     global: {
       statements: 100,

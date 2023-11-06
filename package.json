@@ -1,6 +1,6 @@
 {
   "name": "dom-parser",
-  "version": "1.0.0",
+  "version": "1.0.0-beta",
   "description": "Fast dom parser based on regexps",
   "repository": {
     "type": "git",
@@ -37,5 +37,8 @@
     "test": "jest --coverage"
   },
   "author": "Konstantin Ershov",
-  "license": "ISC"
+  "license": "ISC",
+  "files": [
+    "dist"
+  ]
 }

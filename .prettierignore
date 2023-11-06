@@ -1,3 +1,4 @@
 .eslintrc
 coverage/*
 README.md
+tsconfig.json

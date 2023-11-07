@@ -106,7 +106,7 @@ export class Node {
   }
 
   getElementsByTagName(tagName: string) {
-    return searchElements(this, (elem) => elem.nodeName === tagName);
+    return searchElements(this, (elem) => elem.nodeName.toUpperCase() === tagName.toUpperCase());
   }
 
   getElementsByClassName(className: string) {

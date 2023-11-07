@@ -6,6 +6,8 @@ it('innerHTML', () => {
           <span>
             <div class="broken">
               <div class="inner">1</div>
+              <n:div>with namespace</n:div>
+              <my-div>custom one</my-div>
               <br/>
             </div>
           </span>
@@ -15,6 +17,8 @@ it('innerHTML', () => {
           <span>
             <div class="broken">
               <div class="inner">1</div>
+              <n:div>with namespace</n:div>
+              <my-div>custom one</my-div>
               <br/>
             </div>
           </span>

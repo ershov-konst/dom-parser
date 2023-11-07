@@ -5,10 +5,12 @@ describe('outerHTML', () => {
     const html = `<div id="root">
         <div class="container">
           <span>
-            <div class="broken">
+            <div class="wrapper">
               <div class="inner">1</div>
               <br/>
               <input type="text" disabled/>
+              <n:div>with namespace</n:div>
+              <my-div>custom one</my-div>
             </div>
           </span>
         </div>

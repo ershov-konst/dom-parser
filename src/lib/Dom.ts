@@ -2,14 +2,14 @@ import { Node, NodeType } from './Node';
 import { NodeAttribute } from './NodeAttribute';
 
 const tagRegExp =
-  /(<\/?[a-z][a-z0-9]*(?::[a-z][a-z0-9]*)?\s*(?:\s+[a-z0-9-_]+(?:=(?:(?:'[\s\S]*?')|(?:"[\s\S]*?")))?)*\s*\/?>)|([^<]|<(?![a-z/]))*/gi;
+  /(<\/?(?:[a-z][a-z0-9]*:)?[a-z][a-z0-9-_.]*?[a-z0-9]*\s*(?:\s+[a-z0-9-_]+(?:=(?:(?:'[\s\S]*?')|(?:"[\s\S]*?")))?)*\s*\/?>)|([^<]|<(?![a-z/]))*/gi;
 const attrRegExp = /\s[a-z0-9-_]+\b(\s*=\s*('|")[\s\S]*?\2)?/gi;
 const splitAttrRegExp = /(\s[a-z0-9-_]+\b\s*)(?:=(\s*('|")[\s\S]*?\3))?/gi;
 const startTagExp = /^<[a-z]/;
 const selfCloseTagExp = /\/>$/;
 const closeTagExp = /^<\//;
 const textNodeExp = /^[^<]/;
-const nodeNameExp = /<\/?([a-z][a-z0-9]*)(?::([a-z][a-z0-9]*))?/i;
+const nodeNameExp = /<\/?((?:([a-z][a-z0-9]*):)?(?:[a-z][a-z0-9-_.]*[a-z0-9]))/i;
 const attributeQuotesExp = /^('|")|('|")$/g;
 const noClosingTagsExp = /^(?:area|base|br|col|command|embed|hr|img|input|link|meta|param|source)/i;
 
@@ -35,7 +35,7 @@ export class Dom {
   }
 
   getElementsByTagName(tagName: string) {
-    return this.find((node) => node.nodeName === tagName);
+    return this.find((node) => node.nodeName.toUpperCase() === tagName.toUpperCase());
   }
 
   getElementById(id: string): Node | null {

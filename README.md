@@ -29,18 +29,18 @@ const childNodes = rootNode.getElementsByClassName('childNodeClass');
 
 ## API
 
-##### Dom
+### Dom
 
-Implemented methods:
+#### Implemented methods
 
 * getElementById
 * getElementsByClassName
 * getElementsByTagName
 * getElementsByName
 
-##### Node
+### Node
 
-Implemented properties
+#### Implemented properties
 
 * nodeType
 * nodeName
@@ -53,7 +53,7 @@ Implemented properties
 * outerHTML
 * textContent
 
-Implemented methods
+#### Implemented methods
 
 * getAttribute
 * getElementById

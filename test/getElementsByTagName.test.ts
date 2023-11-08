@@ -74,4 +74,29 @@ describe('getElementsByTagName', () => {
       expect(tipsUnderline).toHaveLength(2);
     });
   });
+
+  describe('tag names with similar nodeName', () => {
+    const html = `<div id="root">
+      <article>
+        <a href='#'> Link </a>
+      </article>
+    </div>`;
+
+    it('Dom', () => {
+      const dom = parseFromString(html);
+      const elements = dom.getElementsByTagName('a');
+
+      expect(elements).toHaveLength(1);
+      expect(elements[0].nodeName).toEqual('a');
+    });
+
+    it('Node', () => {
+      const dom = parseFromString(html);
+      const root = dom.getElementById('root');
+      const elements = root.getElementsByTagName('a');
+
+      expect(elements).toHaveLength(1);
+      expect(elements[0].nodeName).toEqual('a');
+    });
+  });
 });

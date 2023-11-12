@@ -38,4 +38,15 @@ describe('outerHTML', () => {
 
     expect(ctn.outerHTML).toEqual(correctedHtml);
   });
+  it('svg', () => {
+    const svg = `<mask id="mask">
+      <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#clip1"></use>
+      <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#clip2"></use>
+    </mask>`;
+
+    const dom = parseFromString(svg);
+    const ctn = dom.getElementById('mask');
+
+    expect(ctn.outerHTML).toEqual(svg);
+  });
 });

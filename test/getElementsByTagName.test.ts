@@ -99,4 +99,30 @@ describe('getElementsByTagName', () => {
       expect(elements[0].nodeName).toEqual('a');
     });
   });
+
+  describe('starts with doctype', () => {
+    const html = `<!doctype html>
+    <html>
+      <head></head>
+      <body id="root">
+        <a href='#'> Link </a>
+      </body>
+    </html>`;
+
+    it('Dom', () => {
+      const dom = parseFromString(html);
+      const elements = dom.getElementsByTagName('head');
+      expect(elements).toHaveLength(1);
+    })
+
+    it('Node', () => {
+      const dom = parseFromString(html);
+      const root = dom.getElementById('root');
+      const elements = root.getElementsByTagName('a');
+
+      expect(elements).toHaveLength(1);
+      expect(elements[0].nodeName).toEqual('a');
+    })
+
+  })
 });

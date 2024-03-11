@@ -91,14 +91,21 @@ function* domGenerator(html: string) {
 }
 
 function isElementComposed(element: Node | null, tag: string) {
-  if (!tag) {
+  if (!element || !tag) {
     return false;
   }
   const isCloseTag = closeTagExp.test(tag);
   const [, nodeName] = tag.match(nodeNameExp) || [];
   const isElementClosedByTag = isCloseTag && element.nodeName === nodeName;
 
-  return isElementClosedByTag || element.isSelfCloseTag || element.nodeType === NodeType.text;
+  // condition is used for reducing the complexity
+  const condition = [
+    isElementClosedByTag,
+    element.isSelfCloseTag,
+    element.nodeType === NodeType.text,
+  ]
+
+  return condition.some(Boolean)
 }
 
 function getAllTags(html: string) {
